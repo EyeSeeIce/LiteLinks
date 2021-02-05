@@ -11,7 +11,7 @@ import SecondarySettingsBlock from "./SecondarySettingsBlock";
 
 const Settings = ({setRedirect, getData}) => {
     let dispatch = useDispatch()
-    const [activeBlock, setActiveBlock] = useState('main')
+    const [activeBlock, setActiveBlock] = useState('mainContacts')
     const uid = useSelector(state => state.login.uid)
     firebase.auth().onAuthStateChanged(user => {
         dispatch(getUid(user.uid))

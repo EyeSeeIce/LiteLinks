@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import {createUser, getUid} from "../redux/actions/actions";
 import { connect } from 'react-redux'
 import {firebase} from "../Firebase";
+import FormWrapper from "./FormWrapper";
 const Steep2 = ({setRedirect, createUser, name, secondName, middleName, date, work,position,email, password, uid}) => {
     const [formState, setFormState] = useState(false)
     const submit = e =>{
@@ -31,11 +32,11 @@ const Steep2 = ({setRedirect, createUser, name, secondName, middleName, date, wo
     }
     return (
         <div>
-            <form action="" onSubmit={e => submit(e)}>
+            <FormWrapper submit={submit}>
                 <TextField onChange={(e) => changeHandler(e)} name='email' required id="outlined-basic" label="Name" variant="outlined"/>
                 <TextField onChange={(e) => changeHandler(e)} name='password' required id="outlined-basic" type='password' label="Password" variant="outlined" />
                 <button>Регистрация</button>
-            </form>
+            </FormWrapper>
         </div>
     );
 };

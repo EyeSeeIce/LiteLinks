@@ -1,10 +1,11 @@
 import React from 'react';
+import FormWrapper from "./FormWrapper";
 
 const SecondarySettingsBlock = () => {
     return (
-        <div>
-            Второстепенные
-        </div>
+        <FormWrapper>
+
+        </FormWrapper>
     );
 };
 
