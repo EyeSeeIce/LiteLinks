@@ -8,6 +8,7 @@ import JustWrapper from "./JustWrapper";
 
 const MainSettingsBlock = () => {
     const userInfo = useSelector(state => state.data.userInfo)
+    const stateDataLoading = useSelector(state => state.data.loadingState)
     const uid = useSelector(state => state.login.uid)
     const dispatch = useDispatch()
     const changeHandler = e => {
@@ -20,26 +21,25 @@ const MainSettingsBlock = () => {
             uid
         }))
     }
-
+    let un = 'undefined'
+    let load = 'loading'
     return (
         <JustWrapper>
             {/*Photo*/}
-            <Avatar status='Привет' img={userInfo && userInfo.photo}/>
-            {/*Status*/}
-            <div></div>
+            <Avatar status='Looking for a job' img={userInfo && userInfo.photo}/>
             {/*Main info*/}
             <div>
                 <FormWrapper submit={submit}>
-                    <TextField onChange={(e) => changeHandler(e)} value={userInfo ? userInfo.name : '...loading'} name='name' id="outlined-basic"
+                    <TextField onChange={(e) => changeHandler(e)} value={stateDataLoading ? load : userInfo ? userInfo.name: un } name='name' id="outlined-basic"
                                label="First Name" variant="outlined"/>
-                    <TextField onChange={(e) => changeHandler(e)} value={userInfo ? userInfo.secondName : '...loading'} name='secondName' id="outlined-basic"
+                    <TextField onChange={(e) => changeHandler(e)} value={stateDataLoading ? load : userInfo ? userInfo.secondName:un }name='secondName' id="outlined-basic"
                                label="Second Name" variant="outlined"/>
-                    <TextField onChange={(e) => changeHandler(e)} value={userInfo ? userInfo.middleName : '...loading'} name='middleName' id="outlined-basic"
+                    <TextField onChange={(e) => changeHandler(e)} value={stateDataLoading ? load : userInfo ? userInfo.middleName : un } name='middleName' id="outlined-basic"
                                label="Last Name" variant="outlined"/>
-                    <TextField disabled id="standard-disabled" label="Disabled" variant='outlined' value={userInfo ? userInfo.email : '...loading'} />
-                    <TextField onChange={(e) => changeHandler(e)} value={userInfo ? userInfo.work : '...loading'} name='work' id="outlined-basic"
+                    <TextField disabled id="standard-disabled" label="Disabled" variant='outlined' value={stateDataLoading ? load : userInfo ? userInfo.email:un } />
+                    <TextField onChange={(e) => changeHandler(e)} value={stateDataLoading ? load : userInfo ? userInfo.work:un } name='work' id="outlined-basic"
                                label="Work Name" variant="outlined"/>
-                    <TextField onChange={(e) => changeHandler(e)} value={userInfo ? userInfo.position : '...loading'} name='position' id="outlined-basic"
+                    <TextField onChange={(e) => changeHandler(e)} value={stateDataLoading ? load : userInfo ? userInfo.position:un } name='position' id="outlined-basic"
                                label="Position Name" variant="outlined"/>
                                <button>Send</button>
                 </FormWrapper>

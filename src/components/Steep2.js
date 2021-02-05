@@ -45,15 +45,15 @@ const mapDispatchToProps = {
 }
 const mapStateToProps = state => {
     return{
-        uid: state.login.uid,
-        name: state.login.name,
-        secondName: state.login.secondName,
-        middleName: state.login.middleName,
-        date: state.login.date,
-        work: state.login.work,
-        position: state.login.position,
+        uid: state.login.uid || 'undefined',
+        name: state.login.name || 'undefined',
+        secondName: state.login.secondName || 'undefined',
+        middleName: state.login.middleName || 'undefined',
+        date: state.login.date || 'undefined',
+        work: state.login.work || 'undefined',
+        position: state.login.position || 'undefined',
         email: state.login.email,
-        password: state.login.password
+        password: state.login.password || 'undefined'
 
     }
 }
