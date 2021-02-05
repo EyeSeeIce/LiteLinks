@@ -1,0 +1,18 @@
+.sidePanelWrapper{
+  position: fixed;
+  z-index: 10;
+  display: inline-flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 40%;
+  background: rgba(138, 138, 138, 0.85);
+  transition: .2s;
+}
+$fontSize: 50px !important;
+.open{
+  background: #bfbfbf95;
+  font-size: $fontSize;
+  position: absolute;
+  right: calc(0px - 25px);
+  top: calc(50% - 25px);
+}

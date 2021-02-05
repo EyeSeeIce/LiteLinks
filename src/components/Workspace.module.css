@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+}
+
+.noteList {
+  width: 100%;
+  border: 1px solid black;
+  flex-basis: 35%;
+}
+
+.createNote {
+  width: 100%;
+  border: 1px solid black;
+}
+
+/*# sourceMappingURL=Workspace.module.css.map */
