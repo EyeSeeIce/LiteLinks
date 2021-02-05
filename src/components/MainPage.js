@@ -7,7 +7,7 @@ import {createUser, getUid} from "../redux/actions/actions";
 const mainPage = ({ getUid, uid, setRedirect}) => {
     uid && setRedirect('/workspace')
     firebase.auth().onAuthStateChanged(user => {
-        getUid(user.uid)
+        user ? getUid(user.uid) : setRedirect('/')
     })
 
     return (

@@ -7,23 +7,32 @@ const Avatar = ({img, status}) => {
             justifyContent: 'center',
             alignItems: 'center',
             position: 'relative',
-            border: '1px solid black'
         },
         img:{
             width: '200px',
             height: '200px',
-            borderRadius: '50%'
+            borderRadius: '50%',
+            objectFit: 'cover',
         },
         badge:{
+            background: '#ffffff95',
             position: 'absolute',
-            bottom: 0,
+            bottom: '10px',
             right: 0,
+            border: '1px solid black',
+            padding: '5px',
+            borderRadius: '4px',
+        },
+        box:{
+            position: 'relative'
         }
     }
     return (
             <div style={style.wrapper}>
-                <img style={style.img} src={img && img} alt=""/>
-                <span style={style.badge}>{status}</span>
+               <div style={style.box}>
+                   <img style={style.img} src={img && img} alt=""/>
+                   <span style={style.badge}>{status}</span>
+               </div>
             </div>
     );
 };

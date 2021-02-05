@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import classes from "./settings.module.css";
 import {ChevronLeft, ChevronRight} from "@material-ui/icons";
 import {map} from 'underscore'
+import {firebase} from "../Firebase";
 
 
 const SidePanel = ({setActiveBlock}) => {
@@ -33,6 +34,9 @@ const SidePanel = ({setActiveBlock}) => {
             title: 'Third Contacts',
             value: 'customContacts'
         }]
+    const click = e =>{
+    firebase.auth().signOut().then(r => console.log(r))
+    }
     return (
         <div>
             <div style={sidePanelState ? style.open : style.close} className={classes.sidePanelWrapper}>
@@ -41,6 +45,7 @@ const SidePanel = ({setActiveBlock}) => {
                     {sidePanelState ? <ChevronLeft className={classes.open}/> :
                         <ChevronRight className={classes.open}/>}
                 </div>
+                <div onClick={click}>LogOut</div>
             </div>
         </div>
     );

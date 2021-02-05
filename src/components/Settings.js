@@ -9,12 +9,17 @@ import SidePanel from "./SidePanel";
 import MainSettingsBlock from "./MainSettingsBlock";
 import SecondarySettingsBlock from "./SecondarySettingsBlock";
 
-const Settings = ({setRedirect, getData}) => {
+const Settings = ({setRedirect, getData, history}) => {
+    useEffect(() => {
+
+    }, [history])
     let dispatch = useDispatch()
     const [activeBlock, setActiveBlock] = useState('mainContacts')
     const uid = useSelector(state => state.login.uid)
     firebase.auth().onAuthStateChanged(user => {
-        dispatch(getUid(user.uid))
+        if(user !== null){
+            dispatch(getUid(user.uid))
+        }
     })
     useEffect(() => {
         getDataFromDataBase()
