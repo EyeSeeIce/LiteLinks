@@ -8,17 +8,17 @@ import Steep1 from "./components/Steep1";
 import Steep2 from "./components/Steep2";
 import Settings from "./components/Settings";
 
-function App() {
+function App({history}) {
     const [redirect, setRedirect] = useState()
     return (
         <div>
-            {/*<Redirect to={redirect} />*/}
+            <Redirect to={redirect} />
             <Switch>
                 <Route exact path={'/'} component={() => <MainPage setRedirect={setRedirect} />}/>
                 <Route exact path={'/login'} render={() => <Login setRedirect={setRedirect}/>}/>
                 <Route exact path={'/signup'} render={() => <SignUp setRedirect={setRedirect}/>}/>
-                <Route exact path={'/steep1'} render={() => <Steep1 setRedirect={setRedirect}/>}/>
-                <Route exact path={'/steep2'} render={() => <Steep2 setRedirect={setRedirect}/>}/>
+                <Route exact path={'/steep1'} render={() => <Steep1 history={history} setRedirect={setRedirect}/>}/>
+                <Route exact path={'/steep2'} render={() => <Steep2  setRedirect={setRedirect}/>}/>
                 <Route exact path={'/settings'} render={() => <Settings setRedirect={setRedirect}/>}/>
                 <Route exact path={'/workspace'} render={() => <Workspace setRedirect={setRedirect}/>}/>
             </Switch>

@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import TextField from "@material-ui/core/TextField";
-import {NavLink} from "react-router-dom";
+import {Redirect, NavLink} from "react-router-dom";
+import { createBrowserHistory } from "history";
 import classes from './steeps.module.css'
 import {connect} from "react-redux";
 import {createUser, getUid} from "../redux/actions/actions";
 import FormWrapper from "./FormWrapper";
 
-const Steep1 = ({setRedirect, createUser}) => {
+const Steep1 = ({setRedirect, createUser, history}) => {
+
     const [formState, setFormState] = useState(false)
 
     const changeHandler = e => {

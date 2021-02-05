@@ -12,7 +12,8 @@ const mainPage = ({ getUid, uid, setRedirect}) => {
 
     return (
         <div>
-            <NavLink to={'/login'} >Войти</NavLink>
+            <div><NavLink to={'/login'} >Войти</NavLink></div>
+            <div><NavLink to={'/Settings'} >Настройки</NavLink></div>
         </div>
     );
 };

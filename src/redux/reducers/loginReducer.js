@@ -17,7 +17,6 @@ export const loginReducer = (state = initial, action) => {
         case GET_UID:
             return {...state, uid: action.payload}
         case CREATE_USER:
-            console.log(action)
         return {...state, [action.payload.key]: action.payload.value}
 
         default:

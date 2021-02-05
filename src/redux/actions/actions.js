@@ -44,6 +44,7 @@ export function getData(payload) {
         return (dispatch, getState) => {
             let a = getState(state => state)
             dispatch(changeLoadingState())
+            console.log(payload)
             firebase.database().ref(`users/${payload}`).on('value', snp => {
                setTimeout(() => {
                    return dispatch({

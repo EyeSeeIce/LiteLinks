@@ -3,6 +3,8 @@ import TextField from "@material-ui/core/TextField";
 import FormWrapper from "./FormWrapper";
 import {useDispatch, useSelector} from "react-redux";
 import {changeData, updateMainData} from "../redux/actions/actions";
+import Avatar from "./Avatar";
+import JustWrapper from "./JustWrapper";
 
 const MainSettingsBlock = () => {
     const userInfo = useSelector(state => state.data.userInfo)
@@ -20,9 +22,9 @@ const MainSettingsBlock = () => {
     }
 
     return (
-        <div>
+        <JustWrapper>
             {/*Photo*/}
-            <div></div>
+            <Avatar status='Привет' img={userInfo && userInfo.photo}/>
             {/*Status*/}
             <div></div>
             {/*Main info*/}
@@ -42,7 +44,7 @@ const MainSettingsBlock = () => {
                                <button>Send</button>
                 </FormWrapper>
             </div>
-        </div>
+        </JustWrapper>
     );
 };
 

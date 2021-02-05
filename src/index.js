@@ -9,15 +9,17 @@ import {BrowserRouter} from "react-router-dom";
 import './index.css'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk";
+import {createBrowserHistory} from "history";
 
 const store = createStore(rootReducer,composeWithDevTools(
     applyMiddleware(thunk)
 ))
 
 const app = () => {
+    const customHistory = createBrowserHistory();
     return <Provider store={store}>
-        <BrowserRouter>
-            <App/>
+        <BrowserRouter history={customHistory}>
+            <App history={customHistory}/>
         </BrowserRouter>
     </Provider>
 }
