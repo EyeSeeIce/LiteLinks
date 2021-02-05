@@ -1,0 +1,6 @@
+export const GET_UID = 'GET_UID'
+export const ACTIVE_NAV = 'ACTIVE_NAV'
+export const CREATE_NOTE = 'CREATE_NOTE'
+export const CREATE_USER = 'CREATE_USER'
+export const GET_DATA = 'GET_DATA'
+export const SAVE_DATA = 'SAVE_DATA'
