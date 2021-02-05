@@ -1,5 +1,5 @@
 import {
-    ACTIVE_NAV,
+    ACTIVE_NAV, CHANGE_AUTH_STATE,
     CHANGE_DATA, CHANGE_LOADING_STATE,
     CREATE_NOTE,
     CREATE_USER,
@@ -82,6 +82,12 @@ export function updateMainData(payload){
 export function changeLoadingState(payload){
     return{
         type: CHANGE_LOADING_STATE,
+        payload
+    }
+}
+export function changeAuthState(payload){
+    return{
+        type: CHANGE_AUTH_STATE,
         payload
     }
 }

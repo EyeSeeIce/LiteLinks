@@ -6,9 +6,10 @@ import classes from './steeps.module.css'
 import {connect} from "react-redux";
 import {createUser, getUid} from "../redux/actions/actions";
 import FormWrapper from "./FormWrapper";
+import { useHistory } from "react-router-dom";
 
-const Steep1 = ({setRedirect, createUser, history}) => {
-
+const Steep1 = ({setRedirect, createUser}) => {
+    let history = useHistory()
     const [formState, setFormState] = useState(false)
 
     const changeHandler = e => {
@@ -20,7 +21,7 @@ const Steep1 = ({setRedirect, createUser, history}) => {
     }
     const submit = e => {
         e.preventDefault()
-        setRedirect('/steep2')
+        history.push('/steep2')
     }
     return (
         <div>

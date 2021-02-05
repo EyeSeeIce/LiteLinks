@@ -12,13 +12,11 @@ const Login = (props) => {
     const password = useRef()
     const submit = e =>{
         e.preventDefault()
-        console.log(login.current.value)
-        console.log(password.current.value)
         firebase.auth().signInWithEmailAndPassword(login.current.value, password.current.value).then(r => {
             if (r){
                 props.getUid(r.user.uid)
                 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-                props.setRedirect('/settings')
+                history.push('/settings')
             }
         })
     }

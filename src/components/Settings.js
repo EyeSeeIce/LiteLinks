@@ -10,15 +10,15 @@ import MainSettingsBlock from "./MainSettingsBlock";
 import SecondarySettingsBlock from "./SecondarySettingsBlock";
 
 const Settings = ({setRedirect, getData, history}) => {
-    useEffect(() => {
-
-    }, [history])
     let dispatch = useDispatch()
     const [activeBlock, setActiveBlock] = useState('mainContacts')
     const uid = useSelector(state => state.login.uid)
+    console.log(uid)
     firebase.auth().onAuthStateChanged(user => {
         if(user !== null){
             dispatch(getUid(user.uid))
+        }else{
+            history.push('/')
         }
     })
     useEffect(() => {

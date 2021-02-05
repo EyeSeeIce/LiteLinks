@@ -1,10 +1,30 @@
 import {CHANGE_DATA, CHANGE_LOADING_STATE, GET_DATA, SAVE_DATA, UPDATE_MAIN_DATA} from "../types";
 import {firebase} from "../../Firebase";
-import {act} from "@testing-library/react";
 
+import vk from "../../vendors/png/vk.png";
+import github from "../../vendors/github.svg";
+import telegram from "../../vendors/png/telegram.png";
+import twitter from "../../vendors/png/twitter.png";
+import skype from "../../vendors/png/skype.png";
+import linkedin from "../../vendors/png/linkedin.png";
+import viber from "../../vendors/png/viber.png";
+import whatsapp from "../../vendors/png/whatsapp.png";
+import inst from "../../vendors/png/instagram.png";
 const initial = {
     loadingState: false,
+    authState: false,
     data: {},
+    images: {
+        vk,github,telegram,twitter,skype,linkedin,viber,whatsapp,inst,
+    },
+    linksTemplate: {
+        vk: 'https://vk.com/',
+        github: 'https://github.com/',
+        telegram: 'https://t.me/',
+        twitter: 'https://twitter.com/',
+        linkedin: 'https://linkedin.com/in/',
+        instagram: 'https://www.instagram.com/',
+    },
 
 }
 

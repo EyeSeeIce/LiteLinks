@@ -9,7 +9,8 @@ const initial = {
     work: null,
     position: null,
     email: null,
-    password: null
+    password: null,
+    status: null
 }
 
 export const loginReducer = (state = initial, action) => {

@@ -1,6 +1,13 @@
 import React from 'react';
+import {useDispatch} from "react-redux";
+import {changeData} from "../redux/actions/actions";
 
-const Avatar = ({img, status}) => {
+const Avatar = ({img, status, settings}) => {
+    console.log(status)
+    const dispatch = useDispatch()
+    const changeHandler = e => {
+        dispatch(changeData({name: e.target.name, value: e.target.value}))
+    }
     const style = {
         wrapper:{
             display: 'flex',
@@ -31,7 +38,7 @@ const Avatar = ({img, status}) => {
             <div style={style.wrapper}>
                <div style={style.box}>
                    <img style={style.img} src={img && img} alt=""/>
-                   <span style={style.badge}>{status}</span>
+                   {settings ? <input name='status' maxLength='20' onChange={(e) => changeHandler(e)} style={style.badge} value={status} /> : <span style={style.badge}>{status}</span>}
                </div>
             </div>
     );

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Switch, Router, Route, Redirect} from "react-router-dom";
+import {Switch, Router, Route, Redirect, useHistory} from "react-router-dom";
 import MainPage from "./components/MainPage";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
@@ -9,19 +9,17 @@ import Steep2 from "./components/Steep2";
 import Settings from "./components/Settings";
 import MainProfileComponent from "./components/profile components/MainProfileComponents";
 
-function App({history}) {
+function App() {
+    let history = useHistory()
     const [redirect, setRedirect] = useState('/')
     return (
         <div>
-            {/*<Redirect to={redirect} />*/}
             <Switch>
-                <Route exact path={'/'} component={() => <MainPage setRedirect={setRedirect} />}/>
-                <Route exact path={'/login'} render={() => <Login setRedirect={setRedirect}/>}/>
-                <Route exact path={'/signup'} render={() => <SignUp setRedirect={setRedirect}/>}/>
+                <Route exact path={'/'} component={() => <MainPage history={history} setRedirect={setRedirect} />}/>
+                <Route exact path={'/login'} render={() => <Login history={history} setRedirect={setRedirect}/>}/>
                 <Route exact path={'/steep1'} render={() => <Steep1 history={history} setRedirect={setRedirect}/>}/>
-                <Route exact path={'/steep2'} render={() => <Steep2  setRedirect={setRedirect}/>}/>
+                <Route exact path={'/steep2'} render={() => <Steep2 history={history} setRedirect={setRedirect}/>}/>
                 <Route exact path={'/settings'} render={() => <Settings history={history} setRedirect={setRedirect}/>}/>
-                <Route exact path={'/workspace'} render={() => <Workspace setRedirect={setRedirect}/>}/>
                 <Route exact path={'/profile/:id'} component={MainProfileComponent}/>
             </Switch>
         </div>
