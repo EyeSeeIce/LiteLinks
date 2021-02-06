@@ -10,12 +10,14 @@ import linkedin from "../../vendors/png/linkedin.png";
 import viber from "../../vendors/png/viber.png";
 import whatsapp from "../../vendors/png/whatsapp.png";
 import inst from "../../vendors/png/instagram.png";
+import phone from '../../vendors/png/phone.png';
+import email from "../../vendors/png/email.png";
 const initial = {
     loadingState: false,
     authState: false,
     data: {},
     images: {
-        vk,github,telegram,twitter,skype,linkedin,viber,whatsapp,inst,
+        vk,github,telegram,twitter,skype,linkedin,viber,whatsapp,inst,phone, email
     },
     linksTemplate: {
         vk: 'https://vk.com/',
@@ -25,6 +27,9 @@ const initial = {
         linkedin: 'https://linkedin.com/in/',
         instagram: 'https://www.instagram.com/',
     },
+    value: {
+        userInfo:[]
+    }
 
 }
 

@@ -4,8 +4,8 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
-import FormWrapper from "./FormWrapper";
-import JustWrapper from "./JustWrapper";
+import FormWrapper from "./MyCustomComponents/FormWrapper";
+import JustWrapper from "./MyCustomComponents/JustWrapper";
 import classes from './SecondarySettingsBlock.module.css'
 import {firebase} from "../Firebase";
 import { Alert } from "@material-ui/lab";

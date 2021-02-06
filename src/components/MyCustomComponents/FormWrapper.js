@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "./steeps.module.css";
+import classes from "../steeps.module.css";
 
 const FormWrapper = ({submit, children}) => {
 

@@ -3,7 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import {createUser, getUid} from "../redux/actions/actions";
 import {connect, useDispatch} from 'react-redux'
 import {firebase} from "../Firebase";
-import FormWrapper from "./FormWrapper";
+import FormWrapper from "./MyCustomComponents/FormWrapper";
 
 const Steep2 = ({history, createUser, name,status, photo, secondName, middleName, date, work, position, email, password, uid}) => {
     const [formState, setFormState] = useState(false)

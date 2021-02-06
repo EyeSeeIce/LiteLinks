@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {changeData} from "../redux/actions/actions";
 
 const Avatar = ({img, status, settings}) => {
-    console.log(status)
+    const [mouseEnter, setMouseEnter] = useState(false)
     const dispatch = useDispatch()
     const changeHandler = e => {
         dispatch(changeData({name: e.target.name, value: e.target.value}))
@@ -20,6 +20,7 @@ const Avatar = ({img, status, settings}) => {
             height: '200px',
             borderRadius: '50%',
             objectFit: 'cover',
+            boxShadow: mouseEnter ? '0px 0px 10px 2px #5b75ff' : 'none'
         },
         badge:{
             background: '#ffffff95',
@@ -34,10 +35,13 @@ const Avatar = ({img, status, settings}) => {
             position: 'relative'
         }
     }
+    const hover = e =>{
+
+    }
     return (
             <div style={style.wrapper}>
                <div style={style.box}>
-                   <img style={style.img} src={img && img} alt=""/>
+                   <img onMouseEnter={e => setMouseEnter(true)} onMouseLeave={e => setMouseEnter(false)} style={style.img} src={img && img} alt=""/>
                    {settings ? <input name='status' maxLength='20' onChange={(e) => changeHandler(e)} style={style.badge} value={status} /> : <span style={style.badge}>{status}</span>}
                </div>
             </div>

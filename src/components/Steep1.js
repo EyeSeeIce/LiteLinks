@@ -5,7 +5,7 @@ import { createBrowserHistory } from "history";
 import classes from './steeps.module.css'
 import {connect} from "react-redux";
 import {createUser, getUid} from "../redux/actions/actions";
-import FormWrapper from "./FormWrapper";
+import FormWrapper from "./MyCustomComponents/FormWrapper";
 import { useHistory } from "react-router-dom";
 
 const Steep1 = ({setRedirect, createUser}) => {

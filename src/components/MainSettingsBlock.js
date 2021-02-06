@@ -1,15 +1,16 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {Fragment, useEffect, useRef, useState} from 'react';
 import TextField from "@material-ui/core/TextField";
-import FormWrapper from "./FormWrapper";
+import FormWrapper from "./MyCustomComponents/FormWrapper";
 import {useDispatch, useSelector} from "react-redux";
 import {changeData, updateMainData} from "../redux/actions/actions";
 import Avatar from "./Avatar";
-import JustWrapper from "./JustWrapper";
+import JustWrapper from "./MyCustomComponents/JustWrapper";
+import {firebase} from "../Firebase";
 
 const MainSettingsBlock = () => {
     const userInfo = useSelector(state => state.data.userInfo)
+    const [files, setFiles] = useState()
     const uid = useSelector(state => state.login.uid)
-    console.log(userInfo)
     useEffect(() => {
         if (uid){
             console.log('true')
@@ -26,11 +27,30 @@ const MainSettingsBlock = () => {
             uid
         }))
     }
+    const blurPhoto = e =>{
+        let storageRef = firebase.storage().ref();
+        storageRef.child(`/users/${uid}/avatar.jpg`).put(e.target.files[0])
+            .then(snp => {
+                storageRef.child(`/users/${uid}/avatar.jpg`).getDownloadURL()
+                    .then(url => {
+                        dispatch(changeData({name: 'photo', value: url}))
+                        firebase.database().ref(`/users/${uid}/userInfo/photo`).set(url)
+                    })
+            })
+    }
+    console.log(files)
     return (
         <Fragment>
             {userInfo ? <JustWrapper>
                 {/*Photo*/}
-                <Avatar changeHandler={changeHandler} settings status={userInfo ? userInfo.status : null} img={userInfo && userInfo.photo}/>
+                <label htmlFor="file"><Avatar changeHandler={changeHandler} settings status={userInfo ? userInfo.status : null} img={userInfo && userInfo.photo}/></label>
+                <input ref={files} style={{
+                    position: 'absolute',
+                    zIndex: -1,
+                    opacity: 0,
+                    width: '0.1em',
+                    height: '0.1em'
+                }} id='file' onChange={(e) => blurPhoto(e)} type="file"/>
                 {/*Main info*/}
                 <div>
                     <FormWrapper submit={submit}>
