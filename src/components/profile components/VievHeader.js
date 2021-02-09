@@ -11,7 +11,7 @@ const ViewHeader = ({data, theme}) => {
         <Paper theme={theme} header>
             <div className={classes.wrapper}>
                 <div className={classes.photo}>
-                    <Avatar status={status} img={photo}/>
+                    <Avatar theme={theme} status={status} img={photo}/>
                 </div>
                 <div className={classes.info}>
                     {/*Фамилия Имя Отчество Возраст*/}

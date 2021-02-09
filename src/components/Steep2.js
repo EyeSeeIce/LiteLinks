@@ -5,7 +5,7 @@ import {connect, useDispatch} from 'react-redux'
 import {firebase} from "../Firebase";
 import FormWrapper from "./MyCustomComponents/FormWrapper";
 
-const Steep2 = ({history, createUser, name,status, photo, secondName, middleName, date, work, position, email, password, uid}) => {
+const Steep2 = ({history, createUser, name, status, photo, secondName, middleName, date, work, position, email, password, uid}) => {
     const [formState, setFormState] = useState(false)
     const dispatch = useDispatch()
     const submit = e => {
@@ -14,18 +14,33 @@ const Steep2 = ({history, createUser, name,status, photo, secondName, middleName
             getUid(r.user.uid)
             console.log('qwe')
             history.push('/settings')
-            firebase.database().ref(`users/${r.user.uid}/userInfo`).set({
-                name,
-                secondName,
-                middleName,
-                date,
-                work,
-                position,
-                email,
-                uid,
-                status,
-                photo
-            })
+            firebase.database().ref(`users/${r.user.uid}/`).set(
+                {
+                    userInfo: {
+                        name,
+                        secondName,
+                        middleName,
+                        date,
+                        work,
+                        position,
+                        email,
+                        uid,
+                        status,
+                        photo
+                    },
+                    block: {
+                        about: true,
+                        contacts: true,
+                        map: true,
+                        slider: true,
+                        socialLink: true,
+                    },
+                    customBlock:{
+                        map: '',
+                        slider: ''
+                    }
+                }
+            )
         })
 
     }

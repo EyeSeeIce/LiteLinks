@@ -8,6 +8,15 @@
     border: 3px solid #b8860b;
     border-radius: 5px;
 
+
+  }
+  &light{
+    color: #433333;
+    letter-spacing: .3px;
+    background: rgba(229, 229, 229, 0.58);
+    box-shadow: 2px 2px 4px 2px black;
+    border-radius: 5px;
+
   }
 }
 ::-webkit-scrollbar {

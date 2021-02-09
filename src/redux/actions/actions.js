@@ -2,7 +2,7 @@ import {
     ACTIVE_NAV, ADD_COORD_TO_DB, ADD_IMG_TO_DB, CHANGE_AUTH_STATE, CHANGE_BLOCK,
     CHANGE_DATA, CHANGE_LOADING_STATE,
     CREATE_NOTE,
-    CREATE_USER,
+    CREATE_USER, DELETE_COORDINATE, DELETE_SLIDE,
     GET_DATA,
     GET_UID,
     SAVE_DATA,
@@ -106,11 +106,13 @@ export function addCoordToDB(payload) {
     return (dispatch, getState) => {
         let a = getState(state => state)
         let uid = a.login.uid
-        let {lat, long} = payload.coords
+        let {lat, long, message, description} = payload.coords
         firebase.database().ref(`users/${uid}/block/map`).set(true)
         firebase.database().ref(`users/${uid}/customBlock/map`).push({
             lat,
-            long
+            long,
+            message,
+            description
         })
             .then(a => {
                 return {
@@ -119,6 +121,14 @@ export function addCoordToDB(payload) {
                 }
             })
 
+    }
+}
+export function deleteSlide(payload){
+    let {uid, id} = payload
+    firebase.database().ref(`users/${uid}/customBlock/slider/${id}`).remove()
+    return {
+        type: DELETE_SLIDE,
+        payload
     }
 }
 export function addImgToDb(payload){
@@ -133,5 +143,14 @@ export function addImgToDb(payload){
                     payload
                 }
             })
+    }
+}
+
+export function deleteCoordinate(payload){
+    console.log(payload)
+    firebase.database().ref(`users/${payload.uid}/customBlock/map/${payload.id}`).remove()
+    return{
+        type: DELETE_COORDINATE,
+        payload
     }
 }

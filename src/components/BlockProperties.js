@@ -4,10 +4,14 @@ import {useDispatch, useSelector} from "react-redux";
 import Switch from "@material-ui/core/Switch";
 import {changeBlock, changeData} from "../redux/actions/actions";
 import {firebase} from "../Firebase";
+import classes from "./SecondarySettingsBlock.module.css";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
 
 const BlockProperties = () => {
     let data = useSelector(state => state.data.block)
-    let data2 = useSelector(state => state.data.swap)
+    let userInfo = useSelector(state => state.data.userInfo)
     let uid = useSelector(state => state.login.uid)
     let blocks = []
     let dispatch = useDispatch()
@@ -22,6 +26,9 @@ const BlockProperties = () => {
     const changeSwitch = (e, id) => {
         firebase.database().ref(`users/${uid}/block/${e.target.name}`).set(e.target.checked)
     }
+    const changeTheme = e =>{
+        firebase.database().ref(`users/${uid}/userInfo/theme`).set((e.target.value).toLowerCase())
+    }
     return (
         <JustWrapper>
             {blocks.map((item, index) => {
@@ -33,6 +40,13 @@ const BlockProperties = () => {
                     </div>
                 )
             })}
+            <FormControl variant="outlined" className={classes.select}>
+                <InputLabel htmlFor="outlined-age-native-simple">Links</InputLabel>
+                <Select onChange={e => changeTheme(e)} native label="Links">
+                    <option selected={userInfo.theme === 'dark' && true} defaultValue='dark'>Dark</option>
+                    <option selected={userInfo.theme === 'light' && true} defaultValue='light'>Light</option>
+                </Select>
+            </FormControl>
         </JustWrapper>
     );
 };

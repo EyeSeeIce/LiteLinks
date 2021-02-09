@@ -8,10 +8,9 @@ const MapBlock = ({customBlock, data, theme}) => {
     for (let key in map) {
         ar.push(map[key])
     }
-    console.log(ar)
     const defaultOptions = {
-        center: [53, 28],
-        zoom: 14
+        center: [ar[0].lat, ar[0].long],
+        zoom: 11
     }
 
     return (
@@ -25,16 +24,14 @@ const MapBlock = ({customBlock, data, theme}) => {
                         preset: 'islands#invertedVioletClusterIcons',
                         groupByCoordinates: false,
                     }}>
-                        {ar.map((item, index) => {
-                            return <Placemark
-                                defaultGeometry={[item.lat, item.long]}
-                                modules={['geoObject.addon.balloon']}
-                                properties={{
-                                    balloonContentBody:
-                                        'This is balloon loaded by the Yandex.Maps API module system',
-                                }}
-                            />
-                        })}
+                        {ar.map((item, index) => <Placemark
+                            key={index}
+                            defaultGeometry={[item.lat, item.long]}
+                            modules={['geoObject.addon.balloon']}
+                            properties={item.message && {
+                                balloonContentBody: item.message,
+                            }}
+                        />)}
                     </Clusterer>
                 </Map>
             </YMaps>

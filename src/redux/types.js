@@ -12,3 +12,7 @@ export const CHANGE_BLOCK = 'CHANGE_BLOCK'
 
 export const ADD_COORD_TO_DB = 'ADD_COORD_TO_DB'
 export const ADD_IMG_TO_DB = 'ADD_IMG_TO_DB'
+
+export const DELETE_COORDINATE = 'DELETE_COORDINATE'
+
+export const DELETE_SLIDE = 'DELETE_SLIDE'
