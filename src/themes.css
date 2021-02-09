@@ -1,0 +1,42 @@
+.__ACCEPTED_THEME__dark {
+  color: #c6c6c6;
+  letter-spacing: 0.3px;
+  background: #22222294;
+  border: 3px solid #b8860b;
+  border-radius: 5px;
+}
+.__ACCEPTED_THEME__light {
+  color: #433333;
+  letter-spacing: 0.3px;
+  background: rgba(229, 229, 229, 0.58);
+  box-shadow: 2px 2px 4px 2px black;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background: url("https://www.ejin.ru/wp-content/uploads/2018/10/41686792_images_4684452440.jpg");
+  background-size: cover;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b8860b;
+  background-size: cover;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #999;
+}
+
+::-webkit-resizer {
+  background-color: #666;
+}
+
+/*# sourceMappingURL=themes.css.map */
