@@ -6,6 +6,7 @@ import {changeData, updateMainData} from "../redux/actions/actions";
 import Avatar from "./Avatar";
 import JustWrapper from "./MyCustomComponents/JustWrapper";
 import {firebase} from "../Firebase";
+import {ShareOutlined} from "@material-ui/icons";
 
 const MainSettingsBlock = () => {
     const userInfo = useSelector(state => state.data.userInfo)
@@ -38,10 +39,10 @@ const MainSettingsBlock = () => {
                     })
             })
     }
-    console.log(files)
     return (
         <Fragment>
             {userInfo ? <JustWrapper>
+                <div style={{position: 'absolute', right: '0', zIndex: '20'}}><ShareOutlined onClick={e => navigator.clipboard.writeText(`http://localhost:3000/profile/${uid}`)} color='action' fontSize='large'/></div>
                 {/*Photo*/}
                 <label htmlFor="file"><Avatar changeHandler={changeHandler} settings status={userInfo ? userInfo.status : null} img={userInfo && userInfo.photo}/></label>
                 <input ref={files} style={{

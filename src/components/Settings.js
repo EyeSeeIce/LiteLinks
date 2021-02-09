@@ -3,15 +3,15 @@ import {connect, useDispatch, useSelector} from "react-redux";
 import {firebase} from "../Firebase";
 import {getData, getUid} from "../redux/actions/actions";
 import classes from './settings.module.css'
-import {ChevronLeft, ChevronRight} from "@material-ui/icons";
-import {Router, Route} from "react-router-dom";
 import SidePanel from "./SidePanel";
 import MainSettingsBlock from "./MainSettingsBlock";
 import SecondarySettingsBlock from "./SecondarySettingsBlock";
+import BlockProperties from "./BlockProperties";
+import CustomBlocks from "./CustomBlocks";
 
-const Settings = ({setRedirect, getData, history}) => {
+const Settings = ({getData, history}) => {
     let dispatch = useDispatch()
-    const [activeBlock, setActiveBlock] = useState('mainContacts')
+    const [activeBlock, setActiveBlock] = useState('customBlocks')
     const uid = useSelector(state => state.login.uid)
     console.log(uid)
     firebase.auth().onAuthStateChanged(user => {
@@ -33,10 +33,14 @@ const Settings = ({setRedirect, getData, history}) => {
                 return <MainSettingsBlock />
             case 'secondaryContacts':
                 return <SecondarySettingsBlock />
+            case 'blockSettings':
+                return <BlockProperties />
+            case 'customBlocks':
+                return <CustomBlocks />
         }
     }
     return (
-        <div>
+        <div className={classes.wrapper}>
             <SidePanel setActiveBlock={setActiveBlock}/>
             {getSettingsBlock()}
         </div>

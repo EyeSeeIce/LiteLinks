@@ -7,13 +7,11 @@ const LinkComponent = ({data}) => {
     let state = useSelector(state => state.data.images)
     let img = state[data.key]
     const getType = e =>{
-        console.log(data)
         switch (data.key){
             case 'phone':
-                console.log(data.value)
                 return `tel:${data.value.a}`
             case 'email':
-                return `mail:${data.value.a}`
+                return `mailto:${data.value.a}`
             case undefined:
                 break
             default:

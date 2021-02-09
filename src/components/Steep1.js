@@ -8,7 +8,7 @@ import {createUser, getUid} from "../redux/actions/actions";
 import FormWrapper from "./MyCustomComponents/FormWrapper";
 import { useHistory } from "react-router-dom";
 
-const Steep1 = ({setRedirect, createUser}) => {
+const Steep1 = ({createUser}) => {
     let history = useHistory()
     const [formState, setFormState] = useState(false)
 

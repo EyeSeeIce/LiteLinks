@@ -1,13 +1,16 @@
 .wrapper{
   flex-basis: 45%;
-  background: #67676730;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5px;
+  border-radius: 5px;
   img{
     object-fit: cover;
-    width: 100%;
+    width: 120px;
     height: auto;
+    &:hover{
+      transform: scale(1.05);
+    }
   }
 }

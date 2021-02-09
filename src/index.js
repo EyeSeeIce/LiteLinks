@@ -7,6 +7,7 @@ import {applyMiddleware, compose, createStore} from "redux";
 import {rootReducer} from "./redux/rootReducer";
 import {BrowserRouter, browserHistory} from "react-router-dom";
 import './index.css'
+import './themes.css'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk";
 

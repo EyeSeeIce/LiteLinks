@@ -4,8 +4,7 @@ import {firebase} from "../Firebase";
 import { connect } from 'react-redux'
 import {createUser, getUid} from "../redux/actions/actions";
 
-const mainPage = ({ getUid, uid, setRedirect, history}) => {
-    uid && setRedirect('/workspace')
+const mainPage = ({ getUid, uid, history}) => {
     firebase.auth().onAuthStateChanged(user => {
         if (user){
             getUid(user.uid)

@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
@@ -9,6 +9,7 @@ import JustWrapper from "./MyCustomComponents/JustWrapper";
 import classes from './SecondarySettingsBlock.module.css'
 import {firebase} from "../Firebase";
 import { Alert } from "@material-ui/lab";
+import {changeData} from "../redux/actions/actions";
 
 const SecondarySettingsBlock = () => {
     const [error, setError] = useState(false)
@@ -16,11 +17,15 @@ const SecondarySettingsBlock = () => {
     const [contactType, setContactType] = useState('')
     let links = useSelector(state => state.data.linksTemplate)
     let uid = useSelector(state => state.login.uid)
+    let data = useSelector(state => state.data.userInfo)
+    let dispatch = useDispatch()
     const input = useRef()
     const inputContacts = useRef()
     const afterDot = useRef()
     const beforeDot = useRef()
+    const textArea = useRef()
     let ar = []
+
     let contacts = ['phone', 'email']
     for (let key in links) {
         ar.push({
@@ -51,8 +56,10 @@ const SecondarySettingsBlock = () => {
                 }, 5000)
             }
         }
-
-        console.log(a)
+    }
+    const submitMessage = e => {
+        e.preventDefault()
+        firebase.database().ref(`users/${uid}/userInfo/message`).set(textArea.current.value)
     }
     const getContactBlock = e =>{
         switch (contactType){
@@ -66,12 +73,7 @@ const SecondarySettingsBlock = () => {
             case "email":
                 return (
                     <div className={classes.links}>
-                        <TextField inputRef={beforeDot} className={classes.link} placeholder='any email' name='name' id="outlined-basic" variant="outlined"/>
-                        <span style={{
-                            display: 'flex',
-                            alignItems: 'center'
-                        }}>@</span>
-                        <TextField inputRef={afterDot} className={classes.link} placeholder='gmail.com' name='name' id="outlined-basic" variant="outlined"/>
+                        <TextField inputRef={beforeDot} placeholder='any email' name='name' id="outlined-basic" variant="outlined"/>
                     </div>
                 )
         }
@@ -112,6 +114,11 @@ const SecondarySettingsBlock = () => {
                     {getContactBlock()}
                 </div>
                 <button>Create</button>
+            </FormWrapper>
+            Может хотите что-то сказать? :)
+            <FormWrapper submit={(e) => submitMessage(e)}>
+                <textarea ref={textArea} value={data.message} onChange={(e) => dispatch(changeData({name: 'message', value: e.target.value}))} placeholder='max length - 200' style={{resize: 'none', fontSize: '20px', padding: '5px'}} maxLength='200' name="" id="" cols="7" rows="5" />
+                <button>Send</button>
             </FormWrapper>
         </JustWrapper>
     );

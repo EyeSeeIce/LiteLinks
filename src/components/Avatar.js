@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {changeData} from "../redux/actions/actions";
-
+import '../themes.css'
 const Avatar = ({img, status, settings}) => {
     const [mouseEnter, setMouseEnter] = useState(false)
     const dispatch = useDispatch()
@@ -23,11 +23,12 @@ const Avatar = ({img, status, settings}) => {
             boxShadow: mouseEnter ? '0px 0px 10px 2px #5b75ff' : 'none'
         },
         badge:{
-            background: '#ffffff95',
+            background: 'rgba(36, 36, 36, 0.88)',
+            color: '#eeeeee',
             position: 'absolute',
             bottom: '10px',
             right: 0,
-            border: '1px solid black',
+            border: '3px solid #b8860b',
             padding: '5px',
             borderRadius: '4px',
         },
@@ -42,7 +43,7 @@ const Avatar = ({img, status, settings}) => {
             <div style={style.wrapper}>
                <div style={style.box}>
                    <img onMouseEnter={e => setMouseEnter(true)} onMouseLeave={e => setMouseEnter(false)} style={style.img} src={img && img} alt=""/>
-                   {settings ? <input name='status' maxLength='20' onChange={(e) => changeHandler(e)} style={style.badge} value={status} /> : <span style={style.badge}>{status}</span>}
+                   {settings ? <input name='status' maxLength='20' onChange={(e) => changeHandler(e)} style={style.badge} value={status} /> : <p style={style.badge}>{status}</p>}
                </div>
             </div>
     );

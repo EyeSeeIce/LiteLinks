@@ -17,4 +17,9 @@
   top: calc(50% - 25px);
 }
 
+.wrapper {
+  background: #00000030;
+  min-height: 100vh;
+}
+
 /*# sourceMappingURL=settings.module.css.map */

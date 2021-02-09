@@ -32,8 +32,11 @@ const SidePanel = ({setActiveBlock}) => {
         },
         {
             title: 'Third Contacts',
-            value: 'customContacts'
-        }]
+            value: 'blockSettings'
+        },{
+            title: 'Custom Blocks',
+            value: 'customBlocks'
+        },]
     const click = e =>{
     firebase.auth().signOut().then(r => console.log(r))
     }

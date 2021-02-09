@@ -1,23 +1,24 @@
-import {CHANGE_DATA, CHANGE_LOADING_STATE, GET_DATA, SAVE_DATA, UPDATE_MAIN_DATA} from "../types";
+import {CHANGE_BLOCK, CHANGE_DATA, CHANGE_LOADING_STATE, GET_DATA, SAVE_DATA, UPDATE_MAIN_DATA} from "../types";
 import {firebase} from "../../Firebase";
 
-import vk from "../../vendors/png/vk.png";
-import github from "../../vendors/github.svg";
-import telegram from "../../vendors/png/telegram.png";
-import twitter from "../../vendors/png/twitter.png";
+import vk from "../../vendors/icons/VK.svg";
+import github from "../../vendors/icons/github_101792.svg";
+import telegram from "../../vendors/icons/Telegram.svg";
+import twitter from "../../vendors/icons/Twitter.svg";
 import skype from "../../vendors/png/skype.png";
-import linkedin from "../../vendors/png/linkedin.png";
+import linkedin from "../../vendors/icons/Linkedin.svg";
 import viber from "../../vendors/png/viber.png";
 import whatsapp from "../../vendors/png/whatsapp.png";
-import inst from "../../vendors/png/instagram.png";
-import phone from '../../vendors/png/phone.png';
-import email from "../../vendors/png/email.png";
+import instagram from "../../vendors/icons/Instagram.svg";
+import phone from '../../vendors/icons/phone.svg';
+import email from "../../vendors/icons/E-mail.svg";
 const initial = {
     loadingState: false,
     authState: false,
     data: {},
+    block: {},
     images: {
-        vk,github,telegram,twitter,skype,linkedin,viber,whatsapp,inst,phone, email
+        vk,github,telegram,twitter,skype,linkedin,viber,whatsapp,instagram,phone, email
     },
     linksTemplate: {
         vk: 'https://vk.com/',
@@ -49,6 +50,10 @@ export const settingsReducer = (state = initial, action) => {
             return state
         case CHANGE_LOADING_STATE:
             return {...state, loadingState: !state.loadingState}
+        case CHANGE_BLOCK:
+            let block = {...state.block}
+            block[action.payload.name] = action.payload.value
+            return {...state, block}
 
 
         default:

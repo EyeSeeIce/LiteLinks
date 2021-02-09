@@ -6,7 +6,8 @@ const JustWrapper = ({children}) => {
         margin: '0 auto',
         display: 'flex',
         flexDirection: 'column',
-        rowGap: '10px',
+        rowGap: '20px',
+        position: 'relative',
     }
     return (
         <div style={style}>

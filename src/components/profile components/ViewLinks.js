@@ -2,7 +2,7 @@ import React from 'react';
 import Paper from "../MyCustomComponents/Paper";
 import LinkComponent from "./LinkComponent";
 
-const ViewLinks = ({data}) => {
+const ViewLinks = ({data, theme}) => {
     let a = data.socialLinks
     const links = []
     for (let key in a){
@@ -15,7 +15,7 @@ const ViewLinks = ({data}) => {
         links.push('its not a bug its a feature')
     }
     return (
-        <Paper box>
+        <Paper theme={theme} box>
             {links.map(link => <LinkComponent key={link.key} data={link}/>)}
         </Paper>
     );
