@@ -40,17 +40,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script>
-      let lastKnownState = window.localStorage.getItem(`lastKnown_${window.location.href}`);
 
-      lastKnownState = lastKnownState && JSON.parse(lastKnownState);
-
-      if (lastKnownState &&
-              lastKnownState.conditions.userId === "<User ID>" &&
-              lastKnownState.conditions.buildNo === "<Build No.>") {
-        document.getElementById('content').innerHTML = lastKnownState.data;
-        window.hasRestoredState = true;
-      }
-    </script>
   </body>
 </html>
