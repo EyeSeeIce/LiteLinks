@@ -4,6 +4,8 @@ import {createUser, getUid} from "../redux/actions/actions";
 import {connect, useDispatch} from 'react-redux'
 import {firebase} from "../Firebase";
 import FormWrapper from "./MyCustomComponents/FormWrapper";
+import classes from './Login.module.css'
+import JustWrapper from "./MyCustomComponents/JustWrapper";
 
 const Steep2 = ({history, createUser, name, status, photo, secondName, middleName, date, work, position, email, password, uid}) => {
     const [formState, setFormState] = useState(false)
@@ -52,14 +54,16 @@ const Steep2 = ({history, createUser, name, status, photo, secondName, middleNam
         })
     }
     return (
-        <div>
-            <FormWrapper submit={submit}>
-                <TextField onChange={(e) => changeHandler(e)} name='email' required id="outlined-basic" label="Name"
-                           variant="outlined"/>
-                <TextField onChange={(e) => changeHandler(e)} name='password' required id="outlined-basic"
-                           type='password' label="Password" variant="outlined"/>
-                <button>Регистрация</button>
-            </FormWrapper>
+        <div className={classes.wrapper}>
+            <JustWrapper>
+                <FormWrapper submit={submit}>
+                    <TextField onChange={(e) => changeHandler(e)} name='email' required id="outlined-basic" label="Name"
+                               variant="outlined"/>
+                    <TextField onChange={(e) => changeHandler(e)} name='password' required id="outlined-basic"
+                               type='password' label="Password" variant="outlined"/>
+                    <button>Регистрация</button>
+                </FormWrapper>
+            </JustWrapper>
         </div>
     );
 };

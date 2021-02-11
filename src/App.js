@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Switch, Router, Route, Redirect, useHistory} from "react-router-dom";
-import MainPage from "./components/MainPage";
+import MainPage from "./components/MainPage/MainPage";
 import Login from "./components/Login";
 import Steep1 from "./components/Steep1";
 import Steep2 from "./components/Steep2";

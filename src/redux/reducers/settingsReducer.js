@@ -10,7 +10,7 @@ import linkedin from "../../vendors/icons/Linkedin.svg";
 import viber from "../../vendors/png/viber.png";
 import whatsapp from "../../vendors/png/whatsapp.png";
 import instagram from "../../vendors/icons/Instagram.svg";
-import phone from '../../vendors/icons/phone.svg';
+import phone from '../../vendors/icons/phone.png';
 import email from "../../vendors/icons/E-mail.svg";
 const initial = {
     loadingState: false,

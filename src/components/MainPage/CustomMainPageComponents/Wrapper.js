@@ -1,7 +1,7 @@
 import React from 'react';
-import classes from './IconWrapper.module.css'
+import classes from './Wrapper.module.css'
 
-const IconWrapper = ({children, crutch}) => {
+const Wrapper = ({children}) => {
     return (
         <div className={classes.wrapper}>
             {children}
@@ -9,4 +9,4 @@ const IconWrapper = ({children, crutch}) => {
     );
 };
 
-export default IconWrapper;
+export default Wrapper;

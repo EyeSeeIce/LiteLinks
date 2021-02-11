@@ -41,10 +41,12 @@ export function createUser(payload) {
 }
 
 export function getData(payload) {
+
     return (dispatch, getState) => {
         let a = getState(state => state)
         dispatch(changeLoadingState())
         firebase.database().ref(`users/${payload}`).on('value', snp => {
+            console.log(snp.val())
             setTimeout(() => {
                 return dispatch({
                     type: SAVE_DATA,

@@ -1,5 +1,4 @@
 .wrapper {
-  flex-basis: 45%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,6 +12,12 @@
 }
 .wrapper img:hover {
   transform: scale(1.05);
+}
+
+@media screen and (min-width: 900px) {
+  .wrapper img {
+    width: 200px;
+  }
 }
 
 /*# sourceMappingURL=IconWrapper.module.css.map */

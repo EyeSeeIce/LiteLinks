@@ -16,6 +16,7 @@ const ViewLinks = ({data, theme}) => {
     }
     return (
         <Paper theme={theme} box>
+
             {links.map(link => <LinkComponent key={link.key} data={link}/>)}
         </Paper>
     );

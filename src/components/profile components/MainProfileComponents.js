@@ -21,6 +21,7 @@ const MainProfileComponent = ({match, history}) => {
     const data = useSelector(state => state.data)
     let blocks = useSelector(state => state.data.block)
     let customBlock = useSelector(state => state.data.customBlock)
+    console.log(id)
     useEffect(() => {
         dispatch(getData(id))
     }, [])
@@ -31,14 +32,16 @@ const MainProfileComponent = ({match, history}) => {
     })
     const style = {
         dark: {
+            width: '100%',
             background: 'url(https://www.mojandroid.sk/wp-content/uploads/2015/05/Dark-Cosmos-Stars-Clouds-Android-Wallpaper.jpg) no-repeat',
-            backgroundSize: 'fill',
+            backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed'
         },
         light: {
+            width: '100%',
             background: 'url(https://newdesign.ucoz.ru/_ph/5/284936690.jpg) no-repeat',
-            backgroundSize: 'fill',
+            backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed'
         }

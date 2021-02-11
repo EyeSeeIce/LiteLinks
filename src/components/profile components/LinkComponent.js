@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import classes from './ViewContact.module.css'
 
 const LinkComponent = ({data}) => {
+    console.log(data)
     let state = useSelector(state => state.data.images)
     let img = state[data.key]
     const getType = e =>{
@@ -18,9 +19,17 @@ const LinkComponent = ({data}) => {
                 return data.value
         }
     }
+    const style = {
+        ok: {
+
+        },
+        phone:{
+            padding: '7px'
+        }
+    }
     return (
         <IconWrapper crutch={data === 'its not a bug its a feature'}>
-            <a target='_blank' href={getType()}><img className={classes.img} src={img} alt=""/></a>
+            <a target='_blank' href={getType()}><img style={data.key === 'phone' ? style.phone : style.ok} className={classes.img} src={img} alt=""/></a>
         </IconWrapper>
     );
 };

@@ -38,7 +38,7 @@ const SidePanel = ({setActiveBlock}) => {
             value: 'customBlocks'
         },]
     const click = e =>{
-    firebase.auth().signOut().then(r => console.log(r))
+    firebase.auth().signOut()
     }
     return (
         <div>

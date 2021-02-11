@@ -1,0 +1,15 @@
+.wrapper{
+
+}
+button{
+  width: 30%;
+  padding: 5px;
+  background: #e2e2e2;
+  border: 1px solid #bcbcbc;
+  outline: none;
+  transition: .1s;
+  &:hover{
+    background: #434343;
+    color: #e2e2e2;
+  }
+}

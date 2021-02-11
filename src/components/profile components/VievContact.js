@@ -4,7 +4,6 @@ import LinkComponent from "./LinkComponent";
 
 const ViewContact = ({data, theme}) => {
     let a = data.contacts
-    console.log(data)
     const links = []
     for (let key in a){
         links.push({
@@ -12,9 +11,9 @@ const ViewContact = ({data, theme}) => {
             value: a[key]
         })
     }
-    if (links.length & 1){
+    /*if (links.length & 1){
         links.push('its not a bug its a feature')
-    }
+    }*/
     return (
         <Paper theme={theme} box>
             <LinkComponent data={{
